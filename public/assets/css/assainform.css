@@ -1,0 +1,13 @@
+/*#assainissement_file .custom-file-control:lang(fr)::after {
+     content: "Select file..."; 
+}
+#assainissement_file .custom-file-control:lang(fr)::before { 
+    content: "Click me";
+}*/
+
+.custom-file-label::after {
+    content: "Parcourir";
+}
+
+
+

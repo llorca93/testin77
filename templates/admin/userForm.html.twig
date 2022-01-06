@@ -1,0 +1,105 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/userForm.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+          <!-- Breadcrumb-v1 -->
+          <div class="g-hidden-sm-down g-bg-gray-light-v8 g-pa-20">
+            <ul class="u-list-inline g-color-gray-dark-v6">
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Utilisateurs</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Modifier un utilisateur</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+            </ul>
+          </div>
+          <!-- End Breadcrumb-v1 -->
+
+        <div class="g-pa-20">
+            <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Utilisateurs</h1>
+
+            <header class="g-mb-20">
+              <h2 class="g-font-weight-400 g-font-size-16 g-color-black mb-0">Modifier un utilisateur</h2>
+            </header>
+
+        {{ form_start(userForm) }}
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30">
+                        <div class="g-pos-rel">
+                            <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+	                        </span>
+                            {{ form_widget(userForm.firstname) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30">
+                        <div class="g-pos-rel">
+                            <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+	                        </span>
+                            {{ form_widget(userForm.lastname) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30">
+                        <div class="g-pos-rel">
+                            <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+	                        </span>
+                            {{ form_widget(userForm.email) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30">
+                        <div class="g-pos-rel">
+                            <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+	                        </span>
+                            {{ form_widget(userForm.phone) }}
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-2">
+                    {# <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" checked="" type="checkbox"> #}
+                    
+                      {# {{ form_label(userForm.roles , 'Rôles', {'label_attr': {'class': 'form-check-label ml-3 mr-3'}}) }} #}
+                      <div class="check">
+                        {# {{ form_row(userForm.roles, {label_attr: {class: 'checkbox-custom'} }) }} #}
+                        {{ form_widget(userForm.roles) }}
+
+                      </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30 d-flex justify-content-left">
+                        <div class="g-pos-rel">
+                            {{ form_widget(userForm.valider) }}
+                        </div>
+                    </div>
+                </div>      
+                 
+            </div>
+
+        {{ form_end(userForm) }}
+
+        </div>
+
+
+
+{% endblock %}

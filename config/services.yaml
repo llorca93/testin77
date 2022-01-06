@@ -4,6 +4,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    dossier_photos_assainissement: '%kernel.project_dir%/public/assets/img/images'
+    travaux_directory: '%kernel.project_dir%/public/assets/pdf/travaux'
+    slider_directory: '%kernel.project_dir%/public/assets/slider/img'
+    emploi_directory: '%kernel.project_dir%/public/assets/pdf/emplois'
+    mail_directory: '%kernel.project_dir%/public/assets/pdf/emails'
+    articles_directory: '%kernel.project_dir%/public/assets/articles/img'
+    moyens_directory: '%kernel.project_dir%/public/assets/moyens/img'
+    societe_directory: '%kernel.project_dir%/public/assets/societe/img'
 
 services:
     # default configuration for services in *this* file

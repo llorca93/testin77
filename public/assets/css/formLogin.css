@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+}
+
+.content {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.form {
+    /* max-width: 100%;
+    margin: 0 auto;
+    display: flex; */
+    margin: 0 auto;
+    width: 60%;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 50px;    
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.emailInput {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border-color: royalblue;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.passwordInput {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border-color: royalblue;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.button {
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #357edf;
+    color: #fff;
+    font-size: 25px;
+    box-shadow: 6px 6px 16px 0 gray;
+    margin-top: 20px;
+}

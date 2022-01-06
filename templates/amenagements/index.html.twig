@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Amenagements de rivières - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/amenagement.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+
+
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+    <div class="row">
+            <div class="col-md-12 header"></div>
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-4">
+            <h2 class="mt-2 ms-5 head">Compétences</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2">Aménagement de rivières</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2 ms-5">Références</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="nav-competences2">
+                <ul>
+                    <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href="{{ path('hydrologies') }}"><img src="{{ asset('assets/img/3.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/4.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="120px"  alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 assain"> 
+            <div class=" d-flex justify-content-between description">
+                <h4>TEST Ingénierie réalise pour les collectivités et notamment les syndicats de rivière des états des lieux de cours d’eau ainsi que des programmes d’entretien et d’aménagement :</h4>
+            </div>
+            {% for amenagement in amenagements %} 
+                <div class="d-flex  realisations">
+                    <img src="{{ asset('assets/img/puce_bleue.jpg') }}" height="15px" alt="">
+                    <p>{{ amenagement.titre }}</p>
+                </div>
+            {% endfor %}
+            
+            <div class="clients">
+                <h4>Clients : Collectivités territoriales</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="travaux ms-5">
+                {% for amenagement in amenagements %}
+                    <p>{{ amenagement.description|raw }}</p>
+                {% endfor %}
+            </div>
+        </div>   
+    </div>
+</div>
+
+{% endblock %}

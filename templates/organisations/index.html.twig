@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organisation - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/organisation.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-12 header"></div>
+        </div>
+        <div class="row mb-5 mt-5">
+            <div class="col-md-5">
+                <h2 class="mt-2 ms-5 head">Compétences</h2>
+            </div>
+            <div class="col-md-7">
+                <h2 class="head mt-2 text-center">Organisation</h2>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-5">
+                <div class="nav-competences">
+                    <ul>
+                        <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/3.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/4.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="125px"  alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 d-flex flex-wrap justify-content-around">
+            {% for organisation in organisations %}
+                <div class="card mt-5" style="width: 19rem;">
+                    <h5 class="card-title text-center pt-5">{{ organisation.fonction}}</h5>
+                    <div class="card-body">  
+                        <h5 class="card-text text-center fonction">{{ organisation.firstname }} {{ organisation.name}}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

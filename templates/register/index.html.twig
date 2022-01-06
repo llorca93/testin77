@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire d'inscription - Test Ingénierie{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+    <h1>Inscription</h1>
+
+    {% if notification %}
+        <div class="alert" id="alertinfo">{{ notification }}</div>
+        
+    {% endif %}
+
+    <div class="content">
+
+    <div class="form">
+
+        {{ form_start(form) }}
+            <div class="prenom">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+            </div>
+            <div class="nom">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+            </div>
+            <div class="email">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+            <div class="password">
+                {{ form_label(form.password) }}
+                {{ form_widget(form.password) }}
+            </div>
+            <div class="telephone">
+                {{ form_label(form.phone) }}
+                {{ form_widget(form.phone) }}
+            </div>
+            <div class="submit">
+                {{form_widget(form.submit) }}
+            </div>
+    
+
+        {{ form_end(form) }}
+
+    </div>
+</div>
+    
+
+{% endblock %}
+
+

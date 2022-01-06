@@ -1,0 +1,9 @@
+.check {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkpl {
+    width: 50%;
+    padding: 5px auto;
+}

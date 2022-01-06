@@ -1,0 +1,25 @@
+.u-tags-v1 a{
+	text-decoration: none;
+		  color: white;
+		  font-weight: bold;
+}
+.u-tags-v1:hover{
+	text-decoration: underline;
+}
+
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.element {
+  @include clearfix;
+}
+
+ul:nth-of-type(4) {
+  list-style-type: decimal;
+}	

@@ -1,0 +1,77 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+
+<div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+          <!-- Breadcrumb-v1 -->
+          <div class="g-hidden-sm-down g-bg-gray-light-v8 g-pa-20">
+            <ul class="u-list-inline g-color-gray-dark-v6">
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Dossiers Règlementaires</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Créer une compétence</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+            </ul>
+          </div>
+          <!-- End Breadcrumb-v1 -->
+
+        <div class="g-pa-20">
+            <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Dossiers Règlementaires</h1>
+
+            <header class="g-mb-20">
+              <h2 class="g-font-weight-400 g-font-size-16 g-color-black mb-0">Créer une compétence</h2>
+            </header>
+
+        {{ form_start(dossierForm) }}
+          <div class="row">
+            <div class="col-md-3 mb-5">
+              {{ form_label(dossierForm.titre) }}
+              {{ form_widget(dossierForm.titre) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-5">
+              {{ form_label(dossierForm.description) }}
+              {{ form_widget(dossierForm.description) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4  mx-auto">
+              {{ form_widget(dossierForm.valider) }}
+            </div>
+          </div>
+
+            
+
+        {{ form_end(dossierForm) }}
+
+        </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      bsCustomFileInput.init()
+    })
+
+            $('#assainissement_file').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+  </script>
+
+{% endblock %}
+
+
+

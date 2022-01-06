@@ -1,0 +1,124 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+
+
+
+ <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+          <!-- Breadcrumb-v1 -->
+          <div class="g-hidden-sm-down g-bg-gray-light-v8 g-pa-20">
+            <ul class="u-list-inline g-color-gray-dark-v6">
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Offres d'emploi</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Liste des offres d'emploi</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+            </ul>
+          </div>
+          <!-- End Breadcrumb-v1 -->
+
+
+          <div class="g-pa-20">
+            <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Offres d'emploi</h1>
+
+            <header class="g-mb-20">
+              <h2 class="g-font-weight-400 g-font-size-16 g-color-black mb-0">Liste des offres d'emploi</h2>
+            </header>
+
+            <div class="table-responsive g-mb-40">
+              <table class="table u-table--v3 g-color-black">
+                <thead>
+                  <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Fichier</th>
+                    <th>Nom du fichier</th>
+                    <th>Date</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                {% for emploi in emplois %}
+                  <tr>
+                    <td>{{ emploi.titre }}</td>
+                    <td>{{ emploi.description|striptags|u.truncate(50, '...')|raw }}</td>
+                    {# <td>{{ assainissement.file }}</td> #}
+                    <td><a href="{{ asset('assets/pdf/emploi/') ~ emploi.file }}">{{ emploi.file}}</a></td>
+                    <td>{{ emploi.filename }}</td>
+                    <td>{{ emploi.createdAt|date('d/m/Y H:i:s') }}</td>
+                    <td>
+                        <div class="form-group">
+                            <label class="d-flex align-items-center justify-content-between">
+                                <div class="u-check">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" id="" name="radGroup3_1" type="checkbox" {{ (emploi.active) ? 'checked' : '' }} data-id="{{emploi.id}}">
+                                    <div class="u-check-icon-radio-v8">
+                                        <i class="fa" data-check-icon="&#xf00c"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                    </td>
+                    <td>
+                      <div class="g-pos-rel g-top-3 d-inline-block">
+                        <a id="dropDown{{ emploi.id }}Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-secondary--hover" href="#" aria-controls="dropDown{{ emploi.id }}" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" data-dropdown-target="#dropDown{{ emploi.id }}">
+                          <i class="hs-admin-more-alt"></i>
+                        </a>
+                        <div id="dropDown{{ emploi.id }}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden u-dropdown--reverse-y" aria-labelledby="dropDown{{ emploi.id }}Invoker">
+                          <ul class="list-unstyled g-nowrap mb-0">
+                            <li>
+                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" href="{{ path('admin_emploi_update', {'id': emploi.id}) }}">
+                                <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                                Modifier
+                              </a>
+                            </li>
+                            <li>
+                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14 modal-trigger" href="" data-toggle="modal" data-target="#exampleModal" data-id="{{emploi.id}}" data-titre="{{emploi.titre}}">
+                                <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                                Supprimer
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+                  
+                </tbody>
+              </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Supprimer une offre</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <a href="#" class="btn btn-danger">Valider</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('assets/js/emploi.js') }}"></script>
+
+{% endblock %}

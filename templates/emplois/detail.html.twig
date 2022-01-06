@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ emploi.titre }} - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/detail.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 header"></div>
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-12">
+            <h2 class="head mt-2 text-center">{{ emploi.titre }}</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        {# <div class="col-md-4">
+            <div class="nav-competences2">
+                <ul>
+                    <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('hydrologies') }}"><img src="{{ asset('assets/img/3.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('eau') }}"><img src="{{ asset('assets/img/4.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="125px"  alt=""></a></li>
+                </ul>
+            </div>
+        </div> #}
+        <div class="col-md-12 description-offre">
+            <p>{{ emploi.description|raw}}</p>
+        </div>
+    </div>
+    <div class="row mb-5 d-flex justify-content-center">
+        <div class="col-md-3">
+            <a href="{{ path('emplois') }}" class="btn btn-primary">Retour à la liste</a>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-contact">Postuler à l'offre</button>
+        </div>
+    </div>
+
+<div class="modal fade" id="modal-contact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width= 500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Postuler à l'offre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{ form_start(form) }}
+            <div class="modal-body">
+                <div class="mb-3">
+                    {{ form_widget(form.titre) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(form.message) }}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      bsCustomFileInput.init()
+    })
+  </script>
+  <script>
+        window.onload = () => {
+            document.querySelector("#contact_emploi_titre").value =
+            "Candidature {{ emploi.titre|raw }}";
+        };
+    </script>
+
+{% endblock %}

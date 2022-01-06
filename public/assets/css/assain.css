@@ -1,0 +1,215 @@
+/* .container {
+
+    max-width: 80%;
+    margin: 150px auto;
+    display: flex;
+    justify-content: center;
+} */
+
+/*.competences {
+   width: 50%; 
+}
+
+.competences .heading h2 {
+    text-transform: uppercase;
+    margin-left: 80px;
+    margin-bottom: 150px;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 27px;
+}
+
+.content1 {
+    width: 40%;
+    
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.content1 .heading h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 27px;
+    margin-bottom: 150px;
+}
+
+.content1 .description {
+    display: flex;
+
+}
+
+.content1 .description h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    line-height: 23px;
+    margin-top: 5px;
+    padding-left: 5px;
+    
+}
+
+.content1 .presentation p {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    padding-left: 35px;
+}
+
+.content1 .description img {
+    width: 40px;
+    height: 40px;
+}
+
+.content2 {
+  width: 40%;
+  margin-left: 80px;
+}
+
+.content2 .heading h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 27px;
+}
+
+.content2 .description2 p {
+  font-family: 'Advent Pro', sans-serif;
+  line-height: 1em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.competences .nav-competences ul li {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.competences .nav-competences ul li a img {
+    /*border: 1px solid #333333;*/
+    /*padding: 10px;
+    box-shadow: 6px 6px 16px 0 gray;
+    width: 80%;
+}
+
+.competences .nav-competences ul li a img:hover {
+    background-color: #357edf;
+    margin-left: 25px;
+} 
+
+.content2 .team img {
+  margin-top: 30px;
+  width: 90%;
+}*/
+
+.description h4 {
+    font-size: 15px;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+.description img {
+    margin-top: 20px;
+}
+
+.titre {
+    margin-top: 50px;
+}
+
+.titre p {
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    line-height: 22px;
+}
+
+.realisations {
+    margin-top: 30px;
+}
+
+.realisations img {
+    margin-top: 10px;
+}
+
+.realisations p {
+    padding-left: 30px;
+    padding-right: 15px;
+    margin-top: 5px;
+}
+
+.assain {
+    border-right: 1px solid black;
+}
+
+.clients {
+    margin-top: 60px;
+}
+
+.clients h4 {
+    font-size: 18px;
+    line-height: 18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: #357edf;
+}
+
+.travaux p {
+    margin-top: 20px;
+}
+
+.travaux a {
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.nav-competences2 ul li {
+    list-style: none;
+    margin-top: 30px;
+    
+}
+  
+.nav-competences2 ul li a img {
+    padding: 10px;
+    box-shadow: 6px 6px 16px 0 rgb(90, 89, 89);
+    width: 80%;
+}
+  
+.nav-competences2 ul li a img:hover {
+    background-color: #357edf;
+    margin-left: 25px;
+}
+
+.bouton-public {
+    background-color: #357edf;
+    color: #fff;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+ .bouton-public i {
+    visibility: hidden;
+    padding-left: 5px;
+ }
+
+ .bouton-prive i {
+    visibility: hidden;
+    padding-left: 5px;
+ }
+
+.bouton-public:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    
+}
+
+.bouton-prive {
+    background-color: #fff;
+    color: #357edf;
+    border: 1px solid #357edf;
+    font-size: 20px;
+}
+
+.bouton-prive:hover {
+    background-color: #eaeaea;
+    color: #357edf;
+    padding-left: 20px;
+    padding-right: 20px;
+}

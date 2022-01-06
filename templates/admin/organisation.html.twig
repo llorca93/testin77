@@ -1,0 +1,80 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+
+{% set menu_page = "assainissement_liste" %}
+
+ <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+          <!-- Breadcrumb-v1 -->
+          <div class="g-hidden-sm-down g-bg-gray-light-v8 g-pa-20">
+            <ul class="u-list-inline g-color-gray-dark-v6">
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Organisation</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Liste des postes</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+            </ul>
+          </div>
+          <!-- End Breadcrumb-v1 -->
+
+
+          <div class="g-pa-20">
+            <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Organisation</h1>
+
+            <header class="g-mb-20">
+              <h2 class="g-font-weight-400 g-font-size-16 g-color-black mb-0">Liste des postes</h2>
+            </header>
+
+            <div class="table-responsive g-mb-40">
+              <table class="table u-table--v3 g-color-black">
+                <thead>
+                  <tr>
+                    <th>Fonction</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                {% for poste in postes %}
+                  <tr>
+                    <td>{{ poste.fonction }}</td>
+                    <td>{{ poste.name }}</td>
+                    <td>{{ poste.firstname }}</td>
+                    <td>
+                      <div class="g-pos-rel g-top-3 d-inline-block">
+                        <a id="dropDown{{ poste.id }}Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-secondary--hover" href="#" aria-controls="dropDown{{ poste.id }}" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" data-dropdown-target="#dropDown{{ poste.id }}">
+                          <i class="hs-admin-more-alt"></i>
+                        </a>
+                        <div id="dropDown{{ poste.id }}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden u-dropdown--reverse-y" aria-labelledby="dropDown{{ poste.id }}Invoker">
+                          <ul class="list-unstyled g-nowrap mb-0">
+                            <li>
+                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" href="{{ path('admin_organisation_update', {'id': poste.id}) }}">
+                                <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                                Modifier
+                              </a>
+                            </li>
+                            <li>
+                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" href="{{ path('admin_organisation_delete', {'id': poste.id}) }}">
+                                <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                                Supprimer
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div>
+
+{% endblock %}

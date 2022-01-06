@@ -1,0 +1,228 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos principaux clients - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 header"></div>
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-4">
+            <h2 class="mt-2 ms-5 head">Compétences</h2>
+        </div>
+        <div class="col-md-6">
+            <h2 class="head mt-2 text-center">Nos principaux clients</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="nav-competences2">
+                <ul>
+                    <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('hydrologies') }}"><img src="{{ asset('assets/img/3.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('eau') }}"><img src="{{ asset('assets/img/4.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="125px"  alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 ps-5 mt-4">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+            
+                
+            
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {{ cat1 }} 
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        
+                        <div class="accordion-body">
+                        {% for commune in communes1 %}
+                            <ul>
+                                <li>{{ commune.titre}} ({{ commune.departement}})</li>
+                            </ul>    
+                        {% endfor %}
+                        </div>    
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            {{ cat2 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            {% for commune2 in communes2 %}
+                            <ul>
+                                <li>{{ commune2.titre}} ({{ commune2.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-3 ps-5 mt-4">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {{ cat3 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            {% for commune3 in communes3 %}
+                            <ul>
+                                <li>{{ commune3.titre}} ({{ commune3.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            {{ cat4 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                           {% for commune4 in communes4 %}
+                            <ul>
+                                <li>{{ commune4.titre}} ({{ commune4.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            {{ cat5 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                           {% for commune5 in communes5 %}
+                            <ul>
+                                <li>{{ commune5.titre}} ({{ commune5.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            {{ cat6 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                           {% for commune6 in communes6 %}
+                            <ul>
+                                <li>{{ commune6.titre}} ({{ commune6.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEleven" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            {{ cat7 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseEleven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                           {% for commune7 in communes7 %}
+                            <ul>
+                                <li>{{ commune7.titre}} ({{ commune7.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-3 ps-5 mt-4">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {{ cat8 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            {% for commune8 in communes8 %}
+                            <ul>
+                                <li>{{ commune8.titre}} ({{ commune8.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            {{ cat9 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            {% for commune9 in communes9 %}
+                            <ul>
+                                <li>{{ commune9.titre}} ({{ commune9.departement}})</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            {{ cat10 }}
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            {% for commune10 in communes10 %}
+                            <ul>
+                                <li>{{ commune10.titre}}</li>
+                            </ul> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+
+{% endblock %}

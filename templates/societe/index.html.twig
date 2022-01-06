@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La société - Test Ingénierie{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 header"></div>
+        </div>
+        <div class="row mb-5 mt-5">
+            <div class="col-md-5">
+                <h2 class="mt-2 ms-5 head">Compétences</h2>
+            </div>
+            <div class="col-md-7">
+                <h2 class="head mt-2">La société</h2>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-5">
+                <div class="nav-competences">
+                    <ul>
+                        <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/3.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/4.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="125px"  alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="125px"  alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7">
+                {% for societe in societes %}
+                    <div class="description2">
+                        <p>{{ societe.description|raw }}</p>
+                    </div>
+                    <div class="image-equipe">
+                        <img src="{{ asset('assets/societe/img/') ~ societe.illustration }}" alt="societe">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+.description h4 {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 16px;
+    line-height: 29px;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+.description img {
+    margin-top: 20px;
+}
+
+.titre {
+    margin-top: 50px;
+}
+
+.titre p {
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    line-height: 22px;
+    color: #000;
+}
+
+.realisations {
+    margin-top: 30px;
+}
+
+.realisations img {
+    margin-top: 10px;
+}
+
+.realisations h4 {
+    color: #357edf;
+}
+
+.realisations p {
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    font-size: 19px;
+    line-height: 36px;
+    padding-left: 30px;
+    padding-right: 15px;
+    margin-top: 5px;
+}
+
+.realisations img {
+    margin-left: 25px;
+}
+
+.assain {
+    
+    padding-right: 20px;
+}
+
+.clients {
+    margin-top: 60px;
+}
+
+.clients h4 {
+    font-size: 18px;
+    line-height: 18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: #357edf;
+}
+
+.travaux p {
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.travaux a {
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.nav-competences2 ul li {
+    list-style: none;
+    margin-top: 30px;
+    
+}
+  
+.nav-competences2 ul li a img {
+    padding: 10px;
+    box-shadow: 6px 6px 16px 0 rgb(90, 89, 89);
+    width: 80%;
+}
+  
+.nav-competences2 ul li a img:hover {
+    background-color: #357edf;
+    margin-left: 25px;
+}
+

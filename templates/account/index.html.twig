@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/account.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<h1>Mon espace personnel</h1>
+
+<div class="admin">
+{% if is_granted('ROLE_ADMIN') %}
+    <small><a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a></small><br>
+{% endif %}
+</div>
+
+<div class="presentation">
+    <p>Bienvenue sur votre espace personnel {{ app.user.firstname }} c'est dans cet espace que vous allez pouvoir gérer vos informations personnelles.</p>
+</div>
+<hr>
+<div class="content">
+    <div class="account-item">
+        <div class="img">
+            <img src="{{ asset('assets/img/password.png') }}" height="50px" alt="password reset"><br>
+            <a href="">Modifier mon mot de passe</a>
+        </div>  
+    </div>
+    <div class="account-item">
+        <div class="img">
+            <img src="{{ asset('assets/img/adress-book.png') }}" height="50px" alt="password reset"><br>
+            <a href="">Modifier mon mot de passe</a>
+        </div>  
+    </div>
+    <div class="account-item">
+        <div class="img">
+            <img src="{{ asset('assets/img/password.png') }}" height="50px" alt="password reset"><br>
+            <a href="">Modifier mon mot de passe</a>
+        </div>  
+    </div>
+    
+</div>
+
+{% endblock %}

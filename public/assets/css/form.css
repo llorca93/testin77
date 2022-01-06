@@ -1,0 +1,96 @@
+h1 {
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    margin-top: 50px;
+}
+
+.alert {
+    background-color: skyblue;
+    color: #fff;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid skyblue;
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.content {
+
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.form {
+    /* max-width: 100%;
+    margin: 0 auto;
+    display: flex; */
+    margin: 0 auto;
+    width: 60%;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    
+    
+}
+
+.prenom {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+
+.nom {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.email {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.pass1 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.password {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.telephone {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+.button {
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #357edf;
+    color: #fff;
+    font-size: 25px;
+    box-shadow: 6px 6px 16px 0 gray;
+    margin-top: 20px;
+}
+
+.contactform {
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border-color: royalblue;
+    
+}

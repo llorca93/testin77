@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assainissements - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/assain.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+
+
+{% endblock %}
+
+{% block body %}
+
+     
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 header"></div>
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-4">
+            <h2 class="mt-2 ms-5 head">Compétences</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2">Assainissement</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2">Références</h2>
+        </div>
+    </div>
+    <div class="row mb-5 mt-5 d-flex justify-content-center">
+        <div class="col-md-5 ms-5">
+            <a href="" id="btn" class="btn bouton-public">Domaine public<i class="fas fa-chevron-right"></i></a>
+            <a href="{{ path('assainissements_prive') }}" id="btn2" class="btn  ms-5 bouton-prive">Domaine privé<i id="chevron" class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="nav-competences2">
+                <ul>
+                    <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('hydrologies') }}"><img src="{{ asset('assets/img/3.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href="{{ path('eau') }}"><img src="{{ asset('assets/img/4.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="125px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="125px"  alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 assain"> 
+            <div class=" d-flex justify-content-between description">
+                <img src="{{ asset('assets/img/puce-princ.png') }}" height="30px" alt="">
+                <h4>ETUDES GENERALES, ASSISTANCE A MAITRISE D'OUVRAGE, MAITRISE D'ŒUVRE et AUDIT</h4>
+            </div>
+            <div class="titre">
+                <p>Grâce à son expérience diversifiée, TEST Ingénierie accompagne les collectivités territoriales sur l’ensemble des projets liés à l’assainissement :</p>
+            </div>
+            {% for assainissement in assainissements %}
+                
+            
+            <div class="d-flex  realisations">
+                <img src="{{ asset('assets/img/puce_bleue.jpg') }}" height="15px" alt="">
+                <p>{{ assainissement.titre }}</p>
+            </div>
+            {% endfor %}
+            
+            <div class="clients">
+                <h4>Clients : Collectivités territoriales et aménageurs publics</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="travaux">
+                {% for assainissement in assainissements %}
+                    <p>{{ assainissement.description|raw }}</p>
+                    <a href="{{ asset('assets/pdf/travaux/') ~ assainissement.file }}">{{ assainissement.filename }}</a>
+                {% endfor %}
+            </div>
+        </div>   
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/assain.js') }}"></script>
+{% endblock %}

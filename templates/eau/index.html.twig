@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eau Potable - Test Ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('assets/css/eau.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 header"></div>
+    </div>
+    <div class="row mb-5 mt-5">
+        <div class="col-md-4">
+            <h2 class="mt-2 ms-5 head">Compétences</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2">Eau Potable</h2>
+        </div>
+        <div class="col-md-4">
+            <h2 class="head mt-2">Références</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="nav-competences2">
+                <ul>
+                    <li><a href="{{ path('assainissements') }}"><img src="{{ asset('assets/img/1.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href="{{ path('dossiers') }}"><img src="{{ asset('assets/img/2.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href="{{ path('hydrologies') }}"><img src="{{ asset('assets/img/3.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/4.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/5.png') }}" height="120px"  alt=""></a></li>
+                    <li><a href=""><img src="{{ asset('assets/img/6.png') }}" height="120px"  alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 assain"> 
+            <div class=" d-flex justify-content-between description">
+                <img src="{{ asset('assets/img/puce-princ.png') }}" height="30px" alt="">
+                <h4>ETUDES GENERALES, ASSISTANCE A MAITRISE D'OUVRAGE ET MAITRISE D'ŒUVRE RESEAUX D'EAU POTABLE</h4>
+            </div>
+            <div class="titre">
+                <p>TEST Ingénierie réalise pour le compte des Collectivités et d’aménageurs des études générales de diagnostic et de dimensionnement des réseaux d’eau potable, des missions d’assistance à maîtrise d’ouvrage et des missions complètes de maîtrise d’œuvre pour la création, l’extension et le renforcement des réseaux d’eau et pour le remplacement des branchements plombs :</p>
+                
+            </div>
+            {% for eau in eaux %} 
+                <div class="d-flex  realisations">
+                    <img src="{{ asset('assets/img/puce_bleue.jpg') }}" height="15px" alt="">
+                    <p>{{ eau.titre }}</p>
+                </div>
+            {% endfor %}
+            
+            <div class="clients">
+                <h4>Clients : Collectivités territoriales et aménageurs publics</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="travaux ms-5">
+                {% for eau in eaux %}
+                    <p>{{ eau.description|raw }}</p>
+                {% endfor %}
+            </div>
+        </div>   
+    </div>
+</div>
+
+
+
+{% endblock %}
