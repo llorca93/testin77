@@ -83,7 +83,7 @@
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php71": "*",
         "symfony/polyfill-mbstring": "*"
     },
     "scripts": {
