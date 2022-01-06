@@ -27,7 +27,9 @@
                 "symfony/mime": "^4.3|^5.0"
             },
             "replace": {
-                "stof/doctrine-extensions-bundle": "self.version"
+                "stof/doctrine-extensions-bundle": "self.version",
+                "symfony/polyfill-php72": "*",
+                "symfony/polyfill-mbstring": "*"
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4|^5.0",
