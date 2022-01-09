@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0.0",
+        "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
@@ -84,7 +84,7 @@
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php72": "*",
         "symfony/polyfill-mbstring": "*"
     },
     "scripts": {
@@ -92,8 +92,7 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
             "ckeditor:install": "symfony-cmd",
-            "elfinder:install": "symfony-cmd",
-            "requirements-checker": "script"
+            "elfinder:install": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
