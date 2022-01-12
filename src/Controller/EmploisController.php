@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Form\ContactEmploiType;
 use App\Repository\EmploisRepository;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +26,7 @@ class EmploisController extends AbstractController
     /**
      * @Route("/emplois/detail/{slug}", name="emplois_detail")
      */
-    public function detail(EmploisRepository $emploisRepository, $slug, MailerInterface $mailer, Request $request)
+    public function detail(EmploisRepository $emploisRepository, $slug)
     {
         $emploi = $emploisRepository->findOneBy(['slug' => $slug]);
         
