@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EauType extends AbstractType
 {
@@ -18,10 +19,11 @@ class EauType extends AbstractType
             ->add('titre', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('description', CKEditorType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description',
+                'required' => false,
                 'attr' => [
-                    'class' => 'p-3 mb-3 mt-3'
+                    'class' => 'tiny'
                 ]
             ])
             ->add('valider', SubmitType::class, [

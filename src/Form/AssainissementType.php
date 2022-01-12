@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -24,10 +25,11 @@ class AssainissementType extends AbstractType
                 'label' => 'Titre',
                 
             ])
-            ->add('description', CKEditorType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'description',
+                'required' => false,
                 'attr' => [
-                    'class' => 'p-3 mb-3 mt-3'
+                    'class' => 'tiny'
                 ]
                
                 

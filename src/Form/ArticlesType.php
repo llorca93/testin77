@@ -12,7 +12,9 @@ use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ArticlesType extends AbstractType
 {
@@ -22,10 +24,11 @@ class ArticlesType extends AbstractType
             ->add('titre', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('description', CKEditorType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description',
+                'required' => false,
                 'attr' => [
-                    'class' => 'p-3 mb-3 mt-3'
+                    'class' => 'tiny'
                 ]
             ])
             ->add('illustration', FileType::class, [

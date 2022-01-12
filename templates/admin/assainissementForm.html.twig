@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 mb-5">
+            <div class="col-md-10 mb-5 mx-auto">
               {{ form_label(assainForm.description) }}
               {{ form_widget(assainForm.description) }}
             </div>
@@ -71,6 +71,12 @@
 {% endblock %}
 
 {% block javascripts %}
+
+  <script>
+      tinymce.init({
+        selector: '.tiny'
+      });
+    </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
   <script>

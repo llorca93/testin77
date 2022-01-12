@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ContactEmploiType extends AbstractType
 {
@@ -28,8 +29,12 @@ class ContactEmploiType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('message', CKEditorType::class, [
-                'label' => 'Votre message'
+            ->add('message', TextareaType::class, [
+                'label' => 'Votre message',
+                'required' => false,
+                'attr' => [
+                    'class' => 'tiny'
+                ]
             ])
         ;
     }

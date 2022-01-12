@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class VoirieType extends AbstractType
 {
@@ -19,10 +20,11 @@ class VoirieType extends AbstractType
                 'label' => 'Titre',
                 'required' => false
             ])
-            ->add('description', CKEditorType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description',
+                'required' => false,
                 'attr' => [
-                    'class' => 'p-3 mb-3 mt-3'
+                    'class' => 'tiny'
                 ]
             ])
             ->add('valider', SubmitType::class, [

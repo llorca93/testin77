@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class SliderType extends AbstractType
 {
@@ -20,10 +21,11 @@ class SliderType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('content', CKEditorType::class, [
+            ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
+                'required' => false,
                 'attr' => [
-                    'class' => 'p-3 mb-3 mt-3'
+                    'class' => 'tiny'
                 ]
             ])
             ->add('illustration', FileType::class, [
