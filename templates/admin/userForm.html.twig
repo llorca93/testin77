@@ -42,7 +42,7 @@
                             <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
 	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
 	                        </span>
-                            {{ form_widget(userForm.firstname) }}
+                            {{ form_widget(userForm.lastname) }}
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
 	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
 	                        </span>
-                            {{ form_widget(userForm.lastname) }}
+                            {{ form_widget(userForm.firstname) }}
                         </div>
                     </div>
                 </div>
@@ -72,11 +72,22 @@
                             <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
 	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
 	                        </span>
+                            {{ form_widget(userForm.password) }}
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-md-2">
+                    <div class="form-group g-mb-30">
+                        <div class="g-pos-rel">
+                            <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+	                            <i class="hs-admin-link g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+	                        </span>
                             {{ form_widget(userForm.phone) }}
                         </div>
                     </div>
                 </div>
-               <div class="col-md-2">
+                <div class="col-md-2">
                     {# <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" checked="" type="checkbox"> #}
                     
                       {# {{ form_label(userForm.roles , 'Rôles', {'label_attr': {'class': 'form-check-label ml-3 mr-3'}}) }} #}
@@ -86,15 +97,19 @@
 
                       </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group g-mb-30 d-flex justify-content-left">
-                        <div class="g-pos-rel">
-                            {{ form_widget(userForm.valider) }}
-                        </div>
-                    </div>
-                </div>      
-                 
             </div>
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    
+                        
+                            {{ form_widget(userForm.valider) }}
+                        
+                    
+                </div>      
+            </div>
+                
+                 
+            
 
         {{ form_end(userForm) }}
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Mail;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,6 +43,13 @@ class RegisterController extends AbstractController
 
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
+
+
+                $mail = new Mail();
+                $content = "Bonjour " . $user->getFirstname() ."<br>Bienvenue sur notre burau d'études dédié aux travaux d'assainissement<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo facilis consectetur eius recusandae, nemo quisquam rem nobis asperiores. Quibusdam cum inventore a sed eos. Voluptatibus, dolore. Velit temporibus dolorum non!
+                Exercitationem, illum odit iste laudantium architecto quod totam, quis ratione, facilis enim numquam quo iure repellat neque officia maxime necessitatibus. Doloremque ipsam quibusdam, dolorum deserunt quos quisquam obcaecati quia architecto.
+                Aliquam repellat voluptas voluptatum quo fugiat deleniti quisquam, at facere ad ullam labore ea maiores earum. Natus quisquam consequatur maiores, inventore adipisci fugit, ea alias culpa, aliquam aliquid eius error."; 
+                $mail->send($user->getEmail(), $user->getFirstname(), 'Bienvenue sur Test Ingénierie', $content);
 
                 $notification = "Votre inscription s'est correctement déroulée, vous pouvez dès à présent vous connecter à votre compte.";
             } else {

@@ -40,6 +40,7 @@
                     <th>Date de création</th>
                     <th>Auteur</th>
                     <th>Catégorie</th>
+                    <th>A la une</th>
                     <th>Active</th>
                     <th>Actions</th>
                   </tr>
@@ -49,7 +50,7 @@
                 {% for article in articles %}
                   <tr>
                     <td>{{ article.titre }}</td>
-                    <td>{{ article.description|raw }}</td>
+                    <td>{{ article.description|striptags|u.truncate(50, '...')|raw }}</td>
                     <td><img src="{{ asset('assets/articles/img/') ~ article.illustration }}" alt="{{ article.titre }}" height="80px"></td>
                     <td>{{ article.createdAt|date('d/m/Y H:i:s') }}</td>
                     <td>{{ article.user.firstname }}</td>
@@ -58,7 +59,19 @@
                         <div class="form-group">
                             <label class="d-flex align-items-center justify-content-between">
                                 <div class="u-check">
-                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" id="" name="radGroup3_1" type="checkbox" {{ (article.active) ? 'checked' : '' }} data-id="{{article.id}}">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0 isbest" id="" name="radGroup3_1" type="checkbox" {{ (article.isbest) ? 'checked' : '' }} data-id="{{article.id}}">
+                                    <div class="u-check-icon-radio-v8">
+                                        <i class="fa" data-check-icon="&#xf00c"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label class="d-flex align-items-center justify-content-between">
+                                <div class="u-check">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right- isactive" id="" name="radGroup3_1" type="checkbox" {{ (article.active) ? 'checked' : '' }} data-id="{{article.id}}">
                                     <div class="u-check-icon-radio-v8">
                                         <i class="fa" data-check-icon="&#xf00c"></i>
                                     </div>

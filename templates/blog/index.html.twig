@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{# on créé des variables personnalisées #}
+{% set queryParams = app.request.query.all %}
+{% set queryString = queryParams|filter((v, k) => k != "page")|url_encode %}
+
+{% block title %}Actualités - Test ingénierie{% endblock %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">
+    <script src="https://kit.fontawesome.com/5808abb140.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block body %}
+        <div class="container">
+            <div class="row headingblog">
+                <div class="col-md-12 mx-auto">
+                    <h1 class="text-center mt-5 mb-5">ACTUALITES</h1>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                        <a href="#!"><img class="card-img-top" src="{{ asset('assets/articles/img/') ~ articleBest.illustration }}" height="350px" width="850px" alt="{{ articleBest.titre}}" /></a>
+                        <div class="card-body">
+                            <div class="small text-muted">{{ articleBest.createdAt|date('d-m-Y')}}</div>
+                            <h2 class="card-title">{{ articleBest.titre|capitalize }}</h2>                
+                            <p class="card-text">Catégorie : {{ articleBest.category|capitalize}}</p>
+                            <p class="card-text">Auteur : {{ articleBest.user.firstname|capitalize}}</p>
+                            <p class="card-text">{{ articleBest.description|striptags|u.truncate(400, '...')|raw }}</p>
+                            <a class="btn btn-primary" href="{{ path('actualites_detail', {'slug': articleBest.slug}) }}">Voir l'article →</a>
+                        </div>
+                    </div>
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row" id="content">
+                        {% include 'blog/_content.html.twig' %}
+                    
+                    
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Rechercher</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Entrez votre recherche ici..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Valider</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Categories widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Catégories</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <form id="filters">
+                                
+                                        {% for categorie in categories %}
+                                            {# <ul class="list-unstyled mb-0">
+                                                <li><a href="#!">{{ categorie.name|capitalize }}</a></li>
+                                            </ul> #}
+
+                                            {# on vérifie si l'id est dans les parametres #}
+                                            {% if queryParams is not empty and queryParams.category is defined %}
+                                                {% set checked = (categorie.id in queryParams.category) ? "checked" : "" %}
+                                            {% else %}
+                                                {% set checked = "" %}
+                                            {% endif %}
+
+                                            <p><input type="checkbox" name="category[]" id="cat{{ categorie.id }}" value="{{ categorie.id }}" {{ checked }}> <label for="cat{{ categorie.id }}">{{ categorie.name|capitalize }}</label></p>
+                                        {% endfor %}
+                                        <input type="hidden" name="page" value="{{ page }}">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Side Widget</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('assets/js/blog.js') }}"></script>
+    <script src="{{ asset('assets/js/filters.js') }}"></script>
+
+{% endblock %}

@@ -14,8 +14,8 @@ class HomeController extends AbstractController
     */
     public function index(SliderRepository $sliderRepository): Response
     {
-        $slides = $sliderRepository->findBy(['active' => true], ['id' => 'ASC'], 17);
-        
+
+        $slides = $sliderRepository->findBy(['active' => true], ['id' => 'ASC']);
 
         return $this->render('home/index.html.twig', [
             'slides' => $slides,

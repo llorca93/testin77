@@ -57,9 +57,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $articles;
 
+    
+
+    
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        
     }
 
     public function __toString()
@@ -221,4 +226,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    
+
+
+    
+
+    
+    
 }

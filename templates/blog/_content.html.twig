@@ -1,0 +1,39 @@
+                    <div class="row">
+                    {% for article in articles %}
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            
+                            
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top" src="{{ asset('assets/articles/img/') ~ article.illustration }}" height="350px" width="700px" alt="{{ article.titre }}" /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ article.createdAt|date('d-m-Y') }}</div>
+                                    <h2 class="card-title h4">{{ article.titre }}</h2>
+                                    <p class="card-text">Catégorie : {{ article.category|capitalize }}</p>
+                                    <p class="card-text">Auteur : {{ article.user.firstname|capitalize}}</p>
+                                    <p class="card-text">{{ article.description|striptags|u.truncate(300, '...')|raw }}</p>
+                                    <a class="btn btn-primary" href="{{ path('actualites_detail', {'slug': article.slug}) }}">Lire l'article →</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {# on créé des variables personnalisées #}
+                    {% set queryParams = app.request.query.all %}
+                    {% set queryString = queryParams|filter((v, k) => k != "page" and k != "ajax")|url_encode %}
+                    <!-- Pagination-->
+                    {% set pages = (total / limit)|round(0, 'ceil') %}
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                                <li class="page-item {{ (page == 1) ? 'disabled' : '' }}"><a class="page-link" href="?page=1&{{queryString}}" tabindex="-1" aria-disabled="true"><i class="fas fa-step-backward"></i></a></li> 
+                                <li class="page-item {{ (page == 1) ? 'disabled' : '' }}"><a class="page-link" href="{{ (page > 1) ? '?page=' ~( page - 1) : ''}}&{{queryString}}" tabindex="-1" aria-disabled="true"><i class="fas fa-angle-left"></i></a></li>
+                            {% for item in 1..pages %}
+                                <li class="page-item {{ (page == item) ? 'active' : '' }}" aria-current="page"><a class="page-link" href="?page={{ item }}&{{queryString}}">{{ item }}</a></li>
+                            {% endfor %}
+                                <li class="page-item {{ (page == pages) ? 'disabled' : '' }}"><a class="page-link" href="{{ (page < pages) ? '?page=' ~ ( page + 1) : ''}}&{{queryString}}" tabindex="-1" aria-disabled="true"><i class="fas fa-angle-right"></i></a></li>
+                                <li class="page-item {{ (page == pages) ? 'disabled' : '' }}"><a class="page-link" href="?page={{pages}}&{{queryString}}" tabindex="-1" aria-disabled="true"><i class="fas fa-step-forward"></i></a></li>
+                        </ul>
+                    </nav>
+                    </div>

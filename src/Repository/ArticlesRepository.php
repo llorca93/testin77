@@ -36,6 +36,53 @@ class ArticlesRepository extends ServiceEntityRepository
     }
     */
 
+    /**
+     * Return all articles per page
+     * @return void
+     */
+    public function getPaginatedArticles($page, $limit, $filters = null)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('a.active = 1')
+            ->andWhere('a.isBest = 0');
+            
+
+        // on filtre les données
+        if($filters != null){
+            $query->andWhere('a.category IN(:cats)')
+                ->setParameter(':cats', array_values($filters));
+        }
+
+
+        $query
+            ->orderBy('a.createdAt')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
+    /**
+     * Returns number of Articles
+     * @return void
+     */
+    public function getTotalArticles($filters = null)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->where('a.active = 1')
+            ->andWhere('a.isBest = 0');
+
+             // on filtre les données
+        if($filters != null){
+            $query->andWhere('a.category IN(:cats)')
+                ->setParameter(':cats', array_values($filters));
+        }
+        
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?Articles
     {

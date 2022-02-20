@@ -11,7 +11,7 @@
     <h1>Inscription</h1>
 
     {% if notification %}
-        <div class="alert" id="alertinfo">{{ notification }}</div>
+        <div class="alert alert-info" id="alertinfo">{{ notification }}</div>
         
     {% endif %}
 
@@ -32,7 +32,7 @@
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email) }}
             </div>
-            <div class="password">
+            <div class="message">
                 {{ form_label(form.password) }}
                 {{ form_widget(form.password) }}
             </div>
