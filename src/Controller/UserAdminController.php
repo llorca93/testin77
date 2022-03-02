@@ -10,12 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-<<<<<<< HEAD
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-=======
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
->>>>>>> d34d4597b11bc954348de578e62551ec5dda01d1
 
 class UserAdminController extends AbstractController
 {
@@ -42,11 +38,7 @@ class UserAdminController extends AbstractController
     /**
      *@Route("/admin/user/create", name="admin_user_create")
      */
-<<<<<<< HEAD
     public function create(Request $request, UserPasswordHasherInterface $encoder)
-=======
-    public function create(Request $request, UserPasswordEncoderInterface $encoder)
->>>>>>> d34d4597b11bc954348de578e62551ec5dda01d1
     {
         $notification = null;
 
@@ -57,18 +49,11 @@ class UserAdminController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $user = $form->getData();
 
-<<<<<<< HEAD
             $search_email = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
             //dd($search_email);
 
             if(!$search_email) {
                 $password = $encoder->hashPassword($user, $user->getPassword());
-=======
-            $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
-
-            if(!$search_email) {
-                $password = $encoder->encodePassword($user, $user->getPassword());
->>>>>>> d34d4597b11bc954348de578e62551ec5dda01d1
                 $user->setPassword($password);
 
                 $this->entityManager->persist($user);
@@ -91,11 +76,7 @@ class UserAdminController extends AbstractController
     /**
     *@Route("/admin/user/update/{id}", name="admin_user_update")
     */
-<<<<<<< HEAD
     public function update(UserRepository $userRepository, $id, Request $request, UserPasswordHasherInterface $encoder): Response
-=======
-    public function update(UserRepository $userRepository, $id, Request $request, UserPasswordEncoderInterface $encoder): Response
->>>>>>> d34d4597b11bc954348de578e62551ec5dda01d1
     {
         $user = $userRepository->find($id);
         $form = $this->createForm(UserType::class, $user);
@@ -103,11 +84,7 @@ class UserAdminController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-<<<<<<< HEAD
             $password = $encoder->hashPassword($user, $user->getPassword());
-=======
-            $password = $encoder->encodePassword($user, $user->getPassword());
->>>>>>> d34d4597b11bc954348de578e62551ec5dda01d1
             $user->setPassword($password);
 
             $manager = $this->getDoctrine()->getManager();
