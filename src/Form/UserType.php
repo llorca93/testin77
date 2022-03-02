@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -20,7 +21,7 @@ class UserType extends AbstractType
                 'label' => 'Prénom',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'John',
+                    'placeholder' => 'Prénom',
                     'class' => 'form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 g-px-14 g-py-10'
                 ]
             ])
@@ -28,7 +29,7 @@ class UserType extends AbstractType
                 'label' => 'Nom',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Doe',
+                    'placeholder' => 'Nom',
                     'class' => 'form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 g-px-14 g-py-10'
                 ]
             ])
@@ -36,7 +37,7 @@ class UserType extends AbstractType
                 'label' => 'Email',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'prenom.nom@domaine.com',
+                    'placeholder' => 'Email',
                     'class' => 'form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 g-px-14 g-py-10'
                 ]
             ])
@@ -62,9 +63,17 @@ class UserType extends AbstractType
                ] 
                
             ])
+            ->add('password', PasswordType::class, [
+                'required' => true,
+                'label' => 'Mot de passe',
+                'attr' => [
+                    'placeholder' => 'Mot de passe',
+                    'class' => 'form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 g-px-14 g-py-10'
+                ]
+            ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-md u-btn-primary g-mr-10 g-mb-15'
+                    'class' => 'btn btn-block btn-success mt-5'
                 ]
             ])
             

@@ -18,6 +18,8 @@ class ArticleController extends AbstractController
     public function index(ArticlesRepository $articlesRepository): Response
     {
         $articles = $articlesRepository->findAll();
+        //dd($articles);
+        
 
         return $this->render('admin/articles.html.twig', [
             'articles' => $articles
@@ -36,6 +38,7 @@ class ArticleController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $article->setUser($this->getUser());
             $article->setActive(false);
+            $article->setIsBest(false);
 
             $infoIllustration = $form['illustration']->getData();
             $nomOldIllustration = $article->getIllustration();
@@ -69,6 +72,23 @@ class ArticleController extends AbstractController
     {
         $article = $articlesRepository->find($id);
         $article->setActive(($article->getActive()) ? false : true );
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($article);
+        $manager->flush();
+
+        return new Response('true');
+    }
+
+        /**
+     * @Route("/admin/articles/isBest/{id}", name="admin_articles_isBest")
+     */
+    public function isBest(ArticlesRepository $articlesRepository, $id)
+    {
+
+        $article = $articlesRepository->find($id);
+        
+        $article->setIsBest(($article->getIsBest()) ? false : true );
 
         $manager = $this->getDoctrine()->getManager();
         $manager->persist($article);

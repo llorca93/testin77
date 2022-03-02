@@ -103,40 +103,24 @@
             </div>
         </div>   
         <div class="row mt-5 pb-5 mx-auto cards animate__animated animate__zoomIn">
+        {% for article in articles %}
+            
+        
             <div class="col-md-3 mx-auto">
                 <div class="card boite" style="width: 20rem;">
-                    <img src="{{ asset('assets/img/test1.jpg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/articles/img/') ~ article.illustration }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Voir plus</a>
+                        <h5 class="card-title">{{ article.titre}}</h5>
+                        <p class="card-text">{{ article.description|striptags|u.truncate(100, '...')|raw }}</p>
+                        <a href="{{ path('actualites_detail', {'slug': article.slug}) }}" class="btn btn-primary">Voir plus</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mx-auto">
-                <div class="card boite" style="width: 20rem;">
-                    <img src="{{ asset('assets/img/test1.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Voir plus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mx-auto">
-                <div class="card boite" style="width: 20rem;">
-                    <img src="{{ asset('assets/img/test1.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Voir plus</a>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}    
         </div>
         <div class="row my-auto">
             <div class="col-md-3 mx-auto">
-                <button class="btn btn-primary mb-5 bouton">Voir nos actualités</button>
+                <a href="{{ path('blog')}}" class="btn btn-primary mb-5 bouton">Voir nos actualités</a>
             </div>
         </div>
     </div>

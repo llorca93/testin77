@@ -1,0 +1,149 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" integrity="sha256-16PDMvytZTH9heHu9KBPjzrFTaoner60bnABykjNiM0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
+  <link rel="stylesheet" href="{{ asset('assets/css/calendrier.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+
+ <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+          <!-- Breadcrumb-v1 -->
+          <div class="g-hidden-sm-down g-bg-gray-light-v8 g-pa-20">
+            <ul class="u-list-inline g-color-gray-dark-v6">
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Assainissement</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+
+              <li class="list-inline-item g-mr-10">
+                <a class="u-link-v5 g-color-gray-dark-v6 g-color-secondary--hover g-valign-middle" href="#!">Liste des compétences</a>
+                <i class="hs-admin-angle-right g-font-size-12 g-color-gray-light-v6 g-valign-middle g-ml-10"></i>
+              </li>
+            </ul>
+          </div>
+          <!-- End Breadcrumb-v1 -->
+
+
+          <div class="g-pa-20">
+            <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Rendez-vous</h1>
+
+            <header class="g-mb-20">
+              <h2 class="g-font-weight-400 g-font-size-16 g-color-black mb-0">Gestion des rendez-vous</h2>
+            </header>
+            
+            <div id="calendrier">
+              <div class="fc-title-event"></div>
+            </div>
+            {# <pre>
+             {{ dump(data) }} 
+            </pre> #}
+
+            
+
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js" integrity="sha256-XOMgUu4lWKSn8CFoJoBoGd9Q/OET+xrfGYSo+AKpFhE=" crossorigin="anonymous"></script>
+ 
+ 
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    let calendarElt = document.querySelector('#calendrier')
+
+    let calendar = new FullCalendar.Calendar(calendarElt, {
+
+        initialView: 'dayGridMonth',
+        locale: 'fr',
+        timeZone: 'Europe/Paris',
+        buttonText: {
+            today: 'Aujourdhui',
+            month: 'Mois',
+            week: 'Semaine',
+            day: 'Jour',
+            list: 'Liste'
+        },
+        themeSystem: 'bootstrap',
+        headerToolbar: {
+            start: 'prev,next today',
+            center: 'title',
+            end: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        editable: true,
+        eventResizableFromStart: true,
+        events: {{ data|raw }},
+        eventDidMount: function(info) {
+          $(info.el).tooltip({ 
+            title: info.event.extendedProps.communesRdv,
+            placement: "top",
+            trigger: "hover",
+            container: "body"
+      });
+    },
+      //   eventDidMount: function(info) {
+      //   var tooltip = new Tooltip(info.el, {
+      //     //el: document.body.querySelector('.my-tooltip'),
+      //     //activeClass: 'my-tooltip-active',
+      //     //triggerClass: 'my-tooltip-toggle-btn',
+
+      //     title: info.event.extendedProps.description,//you can give data for tooltip
+      //     placement: 'top',
+      //     trigger: 'hover',
+      //     container: 'body'
+      //   });
+      //   console.log(tooltip);
+      // }
+
+      //tooltip.show(); // show the tooltip
+      //.hide(); // hide the tooltip
+        // eventDidMount: function(info) {
+          
+
+        //   let tooltip = Popper.createPopper(info.el, {
+        //     content: info.event.extendedProps.description,
+        //     placement: 'top',
+        //     trigger: 'hover'
+            
+        //   });
+        //   // {description: "Lecture", department: "BioChemistry"}
+        // },
+        
+        
+        
+        
+        
+
+    });
+    //console.log(calendar);
+
+    calendar.on('eventChange', (e) => {
+      let url = `/admin/rendez-vous/api/${e.event.id}/edit`
+      let donnees = {
+        "title": e.event.title,
+        "description": e.event.extendedProps.description,
+        "communesRdv": e.event.extendedProps.communesRdv,
+        "start": e.event.start,
+        "end": e.event.end,
+        "backgroundColor": e.event.backgroundColor,
+        "borderColor": e.event.borderColor,
+        "textColor": e.event.textColor,
+        "allDay": e.event.allDay
+      }
+      
+      let xhr = new XMLHttpRequest
+          xhr.open("PUT", url)
+          xhr.send(JSON.stringify(donnees))
+          console.log(donnees);
+    })
+    console.log(calendar);
+    
+    calendar.render()
+});
+  </script>
+{% endblock %}

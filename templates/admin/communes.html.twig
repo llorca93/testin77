@@ -61,7 +61,7 @@
                               </a>
                             </li>
                             <li>
-                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" href="{{ path('admin_clients_communes_delete', {'id': commune.id}) }}">
+                              <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14 modal-trigger" href="" data-toggle="modal" data-target="#exampleModal" data-id={{commune.id}}>
                                 <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
                                 Supprimer
                               </a>
@@ -75,6 +75,29 @@
                   
                 </tbody>
               </table>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Supprimer un client</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                      <a href="#" class="btn btn-danger">Valider</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  <script src="{{ asset('assets/js/clients.js') }}"></script>
 
 {% endblock %}

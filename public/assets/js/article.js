@@ -1,12 +1,22 @@
 console.log("test");
 
 window.onload = () => {
-  let activer = document.querySelectorAll("[type=checkbox]");
+  let activer = document.querySelectorAll(".isactive");
   for (let bouton of activer) {
     bouton.addEventListener("click", function () {
       let xmlhttp = new XMLHttpRequest();
 
       xmlhttp.open("get", `/admin/articles/activer/${this.dataset.id}`);
+      xmlhttp.send();
+    });
+  }
+
+  let isBest = document.querySelectorAll(".isbest");
+  for(let best of isBest) {
+    best.addEventListener("click", function () {
+      let xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.open("get", `/admin/articles/isBest/${this.dataset.id}`);
       xmlhttp.send();
     });
   }
