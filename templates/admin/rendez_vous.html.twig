@@ -81,6 +81,7 @@
         eventDidMount: function(info) {
           $(info.el).tooltip({ 
             title: info.event.extendedProps.communesRdv,
+            description: info.event.extendedProps.description,
             placement: "top",
             trigger: "hover",
             container: "body"
